@@ -1,16 +1,20 @@
 package models
 
+import androidx.compose.runtime.MutableIntState
+import androidx.compose.runtime.remember
+
 data class GameState(
-    val players: List<Player>,
-    val gameBoard: GameBoard,
-    val stages: Stages
+    private val currentPlayer: Player? = null,
+    val players: List<Player>? = null,
+    val gameBoard: GameBoard? = null,
 ) {
     // Additional properties and methods can be added to store game-specific information.
+//    private val stages: Stages = Stages()
 
-    fun getCurrentPlayer(): Player {
+    fun getCurrentPlayer(): Player? {
         // Implement logic to determine the current player for the current round.
         // You may use the stages object to get the round number and cycle through players.
-        return players[stages.getCurrentRound() % players.size]
+        return currentPlayer
     }
 
     fun updateGameState() {
@@ -20,8 +24,7 @@ data class GameState(
 
     fun printGameState() {
         // Implement a method to print the current game state for debugging or display purposes.
-        println("Current Round: ${stages.getCurrentRound()}")
-        println("Current Player: ${getCurrentPlayer().name}")
+        println("Current Player: ${getCurrentPlayer()?.name}")
         // Add more information as needed.
     }
 }

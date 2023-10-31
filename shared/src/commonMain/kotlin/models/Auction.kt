@@ -1,5 +1,7 @@
 package models
 
+import kotlin.random.Random
+
 data class Auction(
     private val players: List<Player>
 ) {
@@ -7,6 +9,17 @@ data class Auction(
     private val boxA = mutableListOf<Tile>()
     private val boxB = mutableListOf<Tile>()
     private var currentPlayerIndex = 0 // Index of the current player
+
+    fun startAuction() {
+        val sets = listOf("S", "L", "P", "M", "E")
+        val random = Random(sets.size)
+        val result = StringBuilder()
+
+        for (i in 1..4) {
+            val randomSet = sets[random.nextInt()]
+            result.append(randomSet)
+        }
+    }
 
     fun getCurrentPlayer(): Player {
         return players[currentPlayerIndex]
@@ -67,9 +80,3 @@ data class Auction(
         return playerId
     }
 }
-
-data class Bid(
-    val player: Player,
-    val amount: Int,
-    val box: String
-)

@@ -1,9 +1,11 @@
 package models
 
-data class Stages(
-    private val numRounds: Int = 5
-) {
-    private var currentRound: Int = 0
+import androidx.compose.runtime.MutableIntState
+
+class Stages(override var intValue: Int = 0) : MutableIntState {
+    private val numRounds = 6
+    val currentRound: Int
+        get() = intValue
 
     fun isGameFinished(): Boolean {
         return currentRound >= numRounds
@@ -11,14 +13,18 @@ data class Stages(
 
     fun startNextRound() {
         if (!isGameFinished()) {
-            currentRound++
+            intValue++
             println("Round $currentRound started.")
         } else {
             println("Game is finished.")
         }
     }
 
-    fun getCurrentRound(): Int {
-        return currentRound
+    override fun component1(): Int {
+        TODO("Not yet implemented")
+    }
+
+    override fun component2(): (Int) -> Unit {
+        TODO("Not yet implemented")
     }
 }

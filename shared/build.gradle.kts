@@ -28,6 +28,8 @@ kotlin {
                 implementation(compose.material)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+                implementation("com.arkivanov.decompose:decompose:2.1.3-compose-experimental")
+                implementation("com.arkivanov.decompose:extensions-compose-jetbrains:2.1.3-compose-experimental")
             }
         }
         val androidMain by getting {

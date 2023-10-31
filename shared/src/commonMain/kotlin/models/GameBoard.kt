@@ -1,5 +1,11 @@
 package models
 
 data class GameBoard(
-    private val tiles: List<List<Tile>> = listOf()
+    val tiles: List<List<Char?>>? = listOf(
+        listOf('a','x','x','x','x'),
+        listOf('x','x','x','x','x'),
+        listOf('x','x','x','x','x'),
+        listOf('x','x','x','x','x'),
+        listOf('a','x','x','x','x')
+    )
 )
